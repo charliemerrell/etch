@@ -15,8 +15,8 @@ const app = express();
 app.engine('handlebars', expressHandlebars());
 app.set('view engine', 'handlebars');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(session({
   secret: process.env.SESSION_SECRET,
   saveUninitialized: false,
