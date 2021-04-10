@@ -3,3 +3,5 @@ node_modules/
 whiteboard.js
 .env
 notes.txt
+.vscode/
+
