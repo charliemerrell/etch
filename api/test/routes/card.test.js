@@ -13,6 +13,18 @@ describe("DELETE /cards/:cardId", () => {
     });
 });
 
+describe("POST /cards", () => {
+    it("responds with 401 if no sid", (done) => {
+        request(app)
+            .post("/api/cards")
+            .send({
+                question: "What is the capital of England?",
+                asnwer: "London",
+            })
+            .expect(401, done);
+    });
+});
+
 describe("POST /cards/:cardId/answer", () => {
     it("responds with 401 if no sid", (done) => {
         request(app)

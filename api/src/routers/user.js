@@ -11,7 +11,7 @@ router.post("/signup", async (req, res) => {
         !emailValidator.validate(req.body.email) ||
         req.body.password.length < 8
     ) {
-        res.sendStatus(404);
+        res.sendStatus(422);
         return;
     }
     if (await user.getByEmail(req.body.email)) {
