@@ -8,7 +8,7 @@ function Card(props) {
     }, [props.revealed]);
 
     async function markCard(correct) {
-        await fetch(`/api/cards/${props.id}/answer`, {
+        const response = await fetch(`/api/cards/${props.id}/answer`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -18,8 +18,12 @@ function Card(props) {
                 correct,
             }),
         });
-        setRevelead(false);
-        props.onFinished();
+        if (response.status === 401) {
+            props.handleUnauth();
+        } else {
+            setRevelead(false);
+            props.onFinished();
+        }
     }
 
     return (
