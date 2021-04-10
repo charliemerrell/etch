@@ -3,10 +3,6 @@ const card = require("../models/card");
 
 const router = express.Router();
 
-router.get("/me", (req, res) => {
-    res.send(req.session.userId);
-});
-
 router.post("/", async (req, res) => {
     await card.addCard(req.session.userId, req.body.question, req.body.answer);
     res.sendStatus(201);

@@ -6,6 +6,10 @@ const user = require("../models/user");
 
 const router = express.Router();
 
+router.get("/me", (req, res) => {
+    res.json({ userId: req.session.userId || null });
+});
+
 router.post("/signup", async (req, res) => {
     if (
         !emailValidator.validate(req.body.email) ||
@@ -32,9 +36,7 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
     const userRecord = await user.getByEmail(req.body.email);
     if (!userRecord) {
-        res.status(404).render("login", {
-            errorMessage: "Invalid email/password combination",
-        });
+        res.sendStatus(404);
         return;
     }
     const passwordCorrect = await bcrypt.compare(
@@ -42,18 +44,16 @@ router.post("/login", async (req, res) => {
         userRecord.password_hash
     );
     if (!passwordCorrect) {
-        res.status(404).render("login", {
-            errorMessage: "Invalid email/password combination",
-        });
+        res.sendStatus(404);
         return;
     }
     req.session.userId = userRecord.id;
-    res.sendStatus(200);
+    res.json({ userId: req.session.userId });
 });
 
 router.post("/logout", (req, res) => {
     req.session.destroy(() => {
-        res.clearCookie("sid").redirect("/users/login");
+        res.clearCookie("sid").sendStatus(200);
     });
 });
 

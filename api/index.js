@@ -1,8 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const bodyParser = require("body-parser");
 const session = require("express-session");
-const expressHandlebars = require("express-handlebars");
 const redis = require("redis");
 
 const redisClient = redis.createClient();
@@ -11,9 +9,6 @@ const RedisStore = require("connect-redis")(session);
 const router = require("./routers/index");
 
 const app = express();
-
-app.engine("handlebars", expressHandlebars());
-app.set("view engine", "handlebars");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -37,4 +32,4 @@ app.listen(process.env.PORT, () => {
 
 app.use(express.static("public"));
 
-app.use("/", router);
+app.use("/api", router);

@@ -1,9 +1,23 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
+import Quiz from "./Quiz";
+import Login from "./Login";
+
+async function getUserId() {
+    const response = await fetch("/api/users/me");
+    const { userId } = await response.json();
+    return userId;
+}
 
 function App() {
     const [userId, setUserId] = useState(null);
-    fetch("/api/users/me").then((resp) => {});
-    return <div className="App"></div>;
+    getUserId().then(setUserId);
+    console.log(userId);
+    if (userId) {
+        return <Quiz userId={userId} />;
+    } else {
+        return <Login handleSuccess={setUserId} />;
+    }
 }
 
 export default App;
