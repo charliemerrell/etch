@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import Quiz from "./Quiz";
-import Login from "./Login";
+import LoginOrSignUp from "./LoginOrSignUp";
 import Logout from "./Logout";
 
 async function getUserId() {
@@ -13,7 +13,6 @@ async function getUserId() {
 function App() {
     const [userId, setUserId] = useState(null);
     getUserId().then(setUserId);
-    console.log(userId);
 
     function handleLogout() {
         setUserId(null);
@@ -23,11 +22,11 @@ function App() {
         return (
             <div>
                 <Quiz userId={userId} />
-                <Logout Logout handleSuccess={handleLogout} />
+                <Logout handleSuccess={handleLogout} />
             </div>
         );
     } else {
-        return <Login handleSuccess={setUserId} />;
+        return <LoginOrSignUp handleSuccess={setUserId} />;
     }
 }
 

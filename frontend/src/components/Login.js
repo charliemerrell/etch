@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import PasswordInput from "./PasswordInput";
-
 function Login(props) {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -33,8 +31,18 @@ function Login(props) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input placeholder="email" onChange={handleEmailChange} />
-            <PasswordInput handleChange={handlePasswordChange} />
+            <input
+                type="email"
+                placeholder="email"
+                required
+                onChange={handleEmailChange}
+            />
+            <input
+                type="password"
+                placeholder="password"
+                onChange={handlePasswordChange}
+                required
+            />
             <input type="submit" value="Submit" />
         </form>
     );

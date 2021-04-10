@@ -16,6 +16,7 @@ router.post("/signup", async (req, res) => {
         req.body.password.length < 8
     ) {
         res.sendStatus(404);
+        return;
     }
     if (await user.getByEmail(req.body.email)) {
         res.sendStatus(409);
@@ -29,8 +30,9 @@ router.post("/signup", async (req, res) => {
         email: req.body.email,
         passwordHash,
     };
-    req.session.userId = await user.create(userData);
-    res.sendStatus(201);
+    const { id } = await user.create(userData);
+    req.session.userId = id;
+    res.json({ userId: req.session.userId });
 });
 
 router.post("/login", async (req, res) => {
