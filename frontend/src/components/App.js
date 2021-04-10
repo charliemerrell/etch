@@ -1,32 +1,42 @@
 import { useState } from "react";
 
-import Quiz from "./Quiz";
+import AnswerCards from "./AnswerCards";
+import AddCards from "./AddCards";
 import LoginOrSignUp from "./LoginOrSignUp";
 import Logout from "./Logout";
 
-async function getUserId() {
-    const response = await fetch("/api/users/me");
-    const { userId } = await response.json();
-    return userId;
-}
+const MODES = Object.freeze({
+    answerCards: 1,
+    addCards: 2,
+});
 
 function App() {
-    const [userId, setUserId] = useState(null);
-    getUserId().then(setUserId);
+    const [authenticated, setAuthenticated] = useState(true);
+    const [mode, setMode] = useState(MODES.answerCards);
 
-    function handleLogout() {
-        setUserId(null);
-    }
-
-    if (userId) {
+    if (authenticated) {
         return (
             <div>
-                <Quiz userId={userId} />
-                <Logout handleSuccess={handleLogout} />
+                {mode === MODES.answerCards ? (
+                    <AnswerCards
+                        handleUnauth={() => setAuthenticated(false)}
+                        onClickAddCards={() => {
+                            setMode(MODES.addCards);
+                        }}
+                    />
+                ) : (
+                    <AddCards
+                        handleUnauth={() => setAuthenticated(false)}
+                        onClickAnswerCards={() => {
+                            setMode(MODES.answerCards);
+                        }}
+                    />
+                )}
+                <Logout handleSuccess={() => setAuthenticated(false)} />
             </div>
         );
     } else {
-        return <LoginOrSignUp handleSuccess={setUserId} />;
+        return <LoginOrSignUp handleSuccess={() => setAuthenticated(true)} />;
     }
 }
 

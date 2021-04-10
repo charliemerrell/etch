@@ -47,6 +47,7 @@ function SignUp(props) {
                 placeholder="email"
                 required
                 onChange={handleEmailChange}
+                value={email}
             />
             <input
                 type="password"
@@ -54,6 +55,7 @@ function SignUp(props) {
                 onChange={handlePasswordChange}
                 minlength="8"
                 required
+                value={password}
             />
             <input
                 type="password"
@@ -61,6 +63,7 @@ function SignUp(props) {
                 onChange={handlePassword2Change}
                 minlength="8"
                 required
+                value={password2}
             />
             <input type="submit" value="Submit" />
         </form>

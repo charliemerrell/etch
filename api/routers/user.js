@@ -6,10 +6,6 @@ const user = require("../models/user");
 
 const router = express.Router();
 
-router.get("/me", (req, res) => {
-    res.json({ userId: req.session.userId || null });
-});
-
 router.post("/signup", async (req, res) => {
     if (
         !emailValidator.validate(req.body.email) ||
@@ -32,7 +28,7 @@ router.post("/signup", async (req, res) => {
     };
     const { id } = await user.create(userData);
     req.session.userId = id;
-    res.json({ userId: req.session.userId });
+    res.json({ authenticated: !!req.session.userId });
 });
 
 router.post("/login", async (req, res) => {
@@ -50,7 +46,7 @@ router.post("/login", async (req, res) => {
         return;
     }
     req.session.userId = userRecord.id;
-    res.json({ userId: req.session.userId });
+    res.json({ authenticated: !!req.session.userId });
 });
 
 router.post("/logout", (req, res) => {
