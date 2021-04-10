@@ -31,12 +31,7 @@ function Login(props) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input
-                type="email"
-                placeholder="email"
-                required
-                onChange={handleEmailChange}
-            />
+            <input placeholder="email" required onChange={handleEmailChange} />
             <input
                 type="password"
                 placeholder="password"
