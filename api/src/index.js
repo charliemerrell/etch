@@ -33,3 +33,5 @@ app.listen(process.env.PORT, () => {
 app.use(express.static("public"));
 
 app.use("/api", router);
+
+module.exports = app;
