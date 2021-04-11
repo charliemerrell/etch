@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+    api:
+        image: node:12-alpine
+        depends_on:
+            - postgres
+            - redis
+        links:
+            - redis
+        command: sh -c "npm install && npm run start"
+        environment:
+            DATABASE_URL: postgres://api:pass@postgres:5432/dev
+            NODE_ENV: development
+            PORT: 4000
+            SESSION_SECRET: shhhhhh
+            SALT_ROUNDS: 5
+            REDIS_URL: redis://cache
+        ports:
+            - 4000:4000
+        working_dir: /api
+        volumes:
+            - ./api:/api
+    postgres:
+        image: postgres:13.2-alpine
+        ports:
+            - "35432:5432"
+        environment:
+            POSTGRES_USER: api
+            POSTGRES_PASSWORD: pass
+            POSTGRES_DB: dev
+    redis:
+        image: "redis:6.2.1-alpine"
+        container_name: cache
+        expose:
+            - 6379
