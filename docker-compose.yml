@@ -5,8 +5,6 @@ services:
         depends_on:
             - postgres
             - redis
-        links:
-            - redis
         command: sh -c "npm install && npm run start"
         environment:
             DATABASE_URL: postgres://api:pass@postgres:5432/dev
@@ -14,7 +12,7 @@ services:
             PORT: 4000
             SESSION_SECRET: shhhhhh
             SALT_ROUNDS: 5
-            REDIS_URL: redis://cache
+            REDIS_URL: redis://redis
         ports:
             - 4000:4000
         working_dir: /api
@@ -30,6 +28,5 @@ services:
             POSTGRES_DB: dev
     redis:
         image: "redis:6.2.1-alpine"
-        container_name: cache
         expose:
             - 6379
