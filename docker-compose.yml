@@ -1,5 +1,15 @@
 version: "3.8"
 services:
+    frontend:
+        image: node:12-alpine
+        depends_on:
+            - api
+        command: sh -c "npm install && npm run start"
+        ports:
+            - 3000:3000
+        working_dir: /frontend
+        volumes:
+            - ./frontend:/frontend
     api:
         image: node:12-alpine
         depends_on:
