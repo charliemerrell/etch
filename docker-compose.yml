@@ -15,9 +15,9 @@ services:
         depends_on:
             - postgres
             - redis
-        command: sh -c "npm install && npm run dev"
+        command: sh -c "npm install && npm run ${API_START_SCRIPT}"
         environment:
-            DATABASE_URL: postgres://api:pass@postgres:5432/dev
+            DATABASE_URL: postgres://api:pass@postgres:5432/${NODE_ENV}
             NODE_ENV: development
             PORT: 4000
             SESSION_SECRET: shhhhhh
@@ -31,12 +31,12 @@ services:
     postgres:
         image: postgres:13.2-alpine
         ports:
-            - "35432:5432"
+            - 35432:5432
         environment: # 'psql dev -U api' to access
             POSTGRES_USER: api
             POSTGRES_PASSWORD: pass
-            POSTGRES_DB: dev
+            POSTGRES_DB: ${NODE_ENV}
     redis:
-        image: "redis:6.2.1-alpine"
+        image: redis:6.2.1-alpine
         expose:
             - 6379
