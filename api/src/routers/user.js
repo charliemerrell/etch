@@ -28,7 +28,7 @@ router.post("/signup", async (req, res) => {
     };
     const { id } = await user.create(userData);
     req.session.userId = id;
-    res.json({ authenticated: !!req.session.userId });
+    res.sendStatus(201);
 });
 
 router.post("/login", async (req, res) => {
@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
         return;
     }
     req.session.userId = userRecord.id;
-    res.json({ authenticated: !!req.session.userId });
+    res.sendStatus(200);
 });
 
 router.post("/logout", (req, res) => {
