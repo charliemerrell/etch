@@ -25,9 +25,11 @@ app.use(
     })
 );
 
-app.listen(process.env.PORT, () => {
-    console.log(`Api listening at http://localhost:${process.env.PORT}`);
-});
+if (!module.parent) {
+    app.listen(process.env.PORT, () => {
+        console.log(`Api listening at http://localhost:${process.env.PORT}`);
+    });
+}
 
 app.use(express.static("public"));
 

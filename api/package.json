@@ -24,6 +24,7 @@
     "scripts": {
         "start": "node src/index.js",
         "dev": "nodemon src/index.js",
+        "devtest": "mocha 'test/**/*test.js' --recursive --watch --exit",
         "test": "mocha 'test/**/*test.js' --recursive --exit"
     }
 }
