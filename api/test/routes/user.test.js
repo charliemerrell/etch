@@ -2,13 +2,13 @@ const request = require("supertest");
 const app = require("../../src/index");
 const db = require("../../src/db");
 const seed = require("../seed");
+const bcrypt = require("bcrypt");
 
 const seedData = {
     users: [
         {
             email: "johnsmith@etchtestapp.com",
-            passwordHash:
-                "$2y$10$6.Z1A2A2Mv0tMAz/23HDnuWQWJhevAXm49PbLxbf3SqETVlwQXoIa", // password1
+            passwordHash: bcrypt.hashSync("password1", 10),
         },
     ],
 };
@@ -61,5 +61,23 @@ describe("POST /users/login", () => {
                 password: "admin1234545",
             })
             .expect(404, done);
+    });
+    it("responds with 404 if password incorrect", (done) => {
+        request(app)
+            .post("/api/users/login")
+            .send({
+                email: seedData.users[0].email,
+                password: "password2",
+            })
+            .expect(404, done);
+    });
+    it("responds with 200 if login correct", (done) => {
+        request(app)
+            .post("/api/users/login")
+            .send({
+                email: seedData.users[0].email,
+                password: "password1",
+            })
+            .expect(200, done);
     });
 });
