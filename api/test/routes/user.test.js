@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 
 const app = require("../../src/index");
 const db = require("../../src/db");
+const resetDb = require("../../resetDb");
 const seed = require("../seed");
 
 describe("User route", () => {
@@ -10,13 +11,13 @@ describe("User route", () => {
         users: [
             {
                 email: "johnsmith@etchtestapp.com",
-                passwordHash: bcrypt.hashSync("password1", 10),
+                passwordHash: bcrypt.hashSync("password1", 1),
             },
         ],
     };
 
     before(async () => {
-        await db.query("TRUNCATE TABLE users, cards");
+        await resetDb();
         await seed(seedData);
     });
     beforeEach(() => {

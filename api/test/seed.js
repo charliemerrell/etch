@@ -1,12 +1,11 @@
 const db = require("../src/db");
 
 async function seed(data) {
-    for (let key in data) {
-        if (key === "users") {
-            await seedUsers(data["users"]);
-        } else if (key === "cards") {
-            await seedCards(data["cards"]);
-        }
+    if (data.users) {
+        await seedUsers(data.users);
+    }
+    if (data.cards) {
+        await seedCards(data.cards);
     }
 }
 
@@ -15,6 +14,23 @@ async function seedUsers(users) {
         await db.one(
             "INSERT INTO users(email, password_hash) VALUES($1, $2) RETURNING id",
             [email, passwordHash]
+        );
+    }
+}
+
+async function seedCards(cards) {
+    for (const {
+        userId,
+        question,
+        answer,
+        progress,
+        nextAnswerAfter,
+    } of cards) {
+        await db.none(
+            `INSERT INTO cards
+                (user_id, question, answer, progress, next_answer_after) 
+                values($1, $2, $3, $4, $5)`,
+            [userId, question, answer, progress, nextAnswerAfter]
         );
     }
 }
