@@ -35,8 +35,11 @@ function SignUp(props) {
                     password: password,
                 }),
             });
-            const { userId } = await response.json();
-            props.handleSuccess(userId);
+            if (response.ok) {
+                props.handleSuccess();
+            } else {
+                // handle error
+            }
         }
     }
 
@@ -53,7 +56,7 @@ function SignUp(props) {
                 type="password"
                 placeholder="password"
                 onChange={handlePasswordChange}
-                minlength="8"
+                minLength="8"
                 required
                 value={password}
             />
@@ -61,7 +64,7 @@ function SignUp(props) {
                 type="password"
                 placeholder="confirm password"
                 onChange={handlePassword2Change}
-                minlength="8"
+                minLength="8"
                 required
                 value={password2}
             />

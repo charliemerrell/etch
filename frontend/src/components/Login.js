@@ -25,8 +25,11 @@ function Login(props) {
                 password: password,
             }),
         });
-        const { userId } = await response.json();
-        props.handleSuccess(userId);
+        if (response.ok) {
+            props.handleSuccess();
+        } else {
+            // handle error
+        }
     }
 
     return (
