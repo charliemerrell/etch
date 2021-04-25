@@ -33,7 +33,7 @@ function Card(props) {
                 {props.answer}
             </span>
             {revealed ? (
-                <div class="answers">
+                <div className="answers">
                     <button onClick={() => markCard(true)}>Correct</button>
                     <button onClick={() => markCard(false)}>Incorrect</button>
                 </div>
