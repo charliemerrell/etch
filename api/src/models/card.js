@@ -29,11 +29,11 @@ function getAllCards(userId) {
 }
 
 function cardReady(card) {
+    console.log(card.next_answer_after, Date.now());
     return card.next_answer_after < Date.now();
 }
 
 async function getCardsToBeAnswered(userId) {
-    // TOOD make only due ones
     const allCards = await getAllCards(userId);
     return allCards.filter(cardReady);
 }
