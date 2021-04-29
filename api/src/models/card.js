@@ -34,8 +34,10 @@ function cardReady(card) {
 }
 
 async function getCardsToBeAnswered(userId) {
-    const allCards = await getAllCards(userId);
-    return allCards.filter(cardReady);
+    return db.any(
+        "SELECT * FROM cards WHERE user_id = $1 AND next_answer_after < now()",
+        [userId]
+    );
 }
 
 async function cardBelongsToUser(cardId, userId) {
