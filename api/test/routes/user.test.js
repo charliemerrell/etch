@@ -1,17 +1,16 @@
 const request = require("supertest");
-const bcrypt = require("bcrypt");
 
 const app = require("../../src/index");
 const db = require("../../src/db");
 const resetDb = require("../../resetDb");
-const seed = require("../seed");
+const seed = require("../../scripts/seed");
 
 describe("User route", () => {
     const seedData = {
         users: [
             {
                 email: "johnsmith@etchtestapp.com",
-                passwordHash: bcrypt.hashSync("password1", 1),
+                password: "password1",
             },
         ],
     };

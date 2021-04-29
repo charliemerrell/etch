@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt");
+
 const db = require("../src/db");
 
 async function seed(data) {
@@ -10,7 +12,8 @@ async function seed(data) {
 }
 
 async function seedUsers(users) {
-    for (const { email, passwordHash } of users) {
+    for (const { email, password } of users) {
+        const passwordHash = await bcrypt.hash(password, 1);
         await db.one(
             "INSERT INTO users(email, password_hash) VALUES($1, $2) RETURNING id",
             [email, passwordHash]
