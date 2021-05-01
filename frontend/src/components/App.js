@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import AnswerCards from "./AnswerCards";
+import Quiz from "./Quiz";
 import AddCards from "./AddCards";
 import ViewAllCards from "./ViewAllCards";
 import LoginOrSignUp from "./LoginOrSignUp";
@@ -19,24 +19,12 @@ function App() {
                 return <ViewAllCards />;
             case MODES.addCards:
                 return (
-                    <AddCards
-                        handleUnauth={() => setAuthenticated(false)}
-                        onClickAnswerCards={() => {
-                            setMode(MODES.answerCards);
-                        }}
-                    />
+                    <AddCards handleUnauth={() => setAuthenticated(false)} />
                 );
             case MODES.account:
                 return <Account />;
             default:
-                return (
-                    <AnswerCards
-                        handleUnauth={() => setAuthenticated(false)}
-                        onClickAddCards={() => {
-                            setMode(MODES.addCards);
-                        }}
-                    />
-                );
+                return <Quiz handleUnauth={() => setAuthenticated(false)} />;
         }
     }
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import Card from "./Card";
+import AnswerCard from "./AnswerCard";
 
 function Quiz(props) {
     const [cardStack, setCardStack] = useState(null);
@@ -31,15 +31,11 @@ function Quiz(props) {
     } else {
         return (
             <div id="answer-cards">
-                <Card
-                    id={cardStack[0].id}
-                    question={cardStack[0].question}
-                    answer={cardStack[0].answer}
-                    revealed={false}
+                <AnswerCard
+                    cardData={cardStack[0]}
                     onFinished={handleCardFinished}
                     handleUnauth={props.handleUnauth}
                 />
-                <button onClick={props.onClickAddCards}>Add Cards</button>
             </div>
         );
     }
