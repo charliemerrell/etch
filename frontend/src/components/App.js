@@ -2,37 +2,49 @@ import { useState } from "react";
 
 import AnswerCards from "./AnswerCards";
 import AddCards from "./AddCards";
+import ViewAllCards from "./ViewAllCards";
 import LoginOrSignUp from "./LoginOrSignUp";
-import Logout from "./Logout";
+import Navbar from "./Navbar";
+import Account from "./Account";
 
-const MODES = Object.freeze({
-    answerCards: 1,
-    addCards: 2,
-});
+import { MODES } from "../constants";
 
 function App() {
     const [authenticated, setAuthenticated] = useState(true);
     const [mode, setMode] = useState(MODES.answerCards);
 
-    if (authenticated) {
-        return (
-            <div>
-                {mode === MODES.answerCards ? (
-                    <AnswerCards
-                        handleUnauth={() => setAuthenticated(false)}
-                        onClickAddCards={() => {
-                            setMode(MODES.addCards);
-                        }}
-                    />
-                ) : (
+    function jsxForMode() {
+        switch (mode) {
+            case MODES.viewAllCards:
+                return <ViewAllCards />;
+            case MODES.addCards:
+                return (
                     <AddCards
                         handleUnauth={() => setAuthenticated(false)}
                         onClickAnswerCards={() => {
                             setMode(MODES.answerCards);
                         }}
                     />
-                )}
-                <Logout handleSuccess={() => setAuthenticated(false)} />
+                );
+            case MODES.account:
+                return <Account />;
+            default:
+                return (
+                    <AnswerCards
+                        handleUnauth={() => setAuthenticated(false)}
+                        onClickAddCards={() => {
+                            setMode(MODES.addCards);
+                        }}
+                    />
+                );
+        }
+    }
+
+    if (authenticated) {
+        return (
+            <div>
+                {jsxForMode()}
+                <Navbar onClickMode={(mode) => setMode(mode)} mode={mode} />
             </div>
         );
     } else {
