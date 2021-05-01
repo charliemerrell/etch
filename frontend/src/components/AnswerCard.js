@@ -28,6 +28,8 @@ function AnswerCard(props) {
             <CardContainer
                 onFlipCard={() => setDisclosed(true)}
                 cardData={props.cardData}
+                handleUnauth={props.handleUnauth}
+                handleDelete={props.onFinished}
             />
             <div className={"classify-answer" + disclosed ? " ready" : ""}>
                 <button onClick={() => classifyAnswer(true)}>Correct</button>
