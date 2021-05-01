@@ -20,23 +20,23 @@ function Quiz(props) {
     }
 
     if (cardStack === null) {
-        return <div id="answer-cards"></div>;
+        return <main id="answer-cards"></main>;
     } else if (cardStack.length === 0) {
         return (
-            <div id="answer-cards">
+            <main id="answer-cards">
                 <span>No cards pending</span>
                 <button onClick={props.onClickAddCards}>Add Cards</button>
-            </div>
+            </main>
         );
     } else {
         return (
-            <div id="answer-cards">
+            <main id="answer-cards">
                 <AnswerCard
                     cardData={cardStack[0]}
                     onFinished={handleCardFinished}
                     handleUnauth={props.handleUnauth}
                 />
-            </div>
+            </main>
         );
     }
 }

@@ -4,7 +4,7 @@ function Card(props) {
     const [showingQuestion, setShowingQuestion] = useState(true);
     function handleClick() {
         setShowingQuestion(!showingQuestion);
-        props.onClick();
+        props.onClick && props.onClick();
     }
     return (
         <span

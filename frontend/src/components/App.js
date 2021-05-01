@@ -16,7 +16,11 @@ function App() {
     function jsxForMode() {
         switch (mode) {
             case MODES.viewAllCards:
-                return <ViewAllCards />;
+                return (
+                    <ViewAllCards
+                        handleUnauth={() => setAuthenticated(false)}
+                    />
+                );
             case MODES.addCards:
                 return (
                     <AddCards handleUnauth={() => setAuthenticated(false)} />
