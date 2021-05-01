@@ -13,7 +13,7 @@ function Quiz(props) {
                 res.json().then(({ cards }) => setCardStack(cards));
             }
         });
-    }, []);
+    }, [props]);
 
     function handleCardFinished() {
         setCardStack(cardStack.slice(1));
