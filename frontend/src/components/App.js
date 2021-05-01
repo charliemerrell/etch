@@ -34,10 +34,10 @@ function App() {
 
     if (authenticated) {
         return (
-            <div>
-                {jsxForMode()}
+            <>
                 <Navbar onClickMode={(mode) => setMode(mode)} mode={mode} />
-            </div>
+                {jsxForMode()}
+            </>
         );
     } else {
         return <LoginOrSignUp handleSuccess={() => setAuthenticated(true)} />;
