@@ -32,11 +32,17 @@ function AnswerCard(props) {
                 handleUnauth={props.handleUnauth}
                 handleDelete={props.onFinished}
             />
-            <div className={"classify-answer" + disclosed ? " ready" : ""}>
-                <button onClick={() => classifyAnswer(false)}>
+            <div className={"classify-answer" + (disclosed ? " ready" : "")}>
+                <button
+                    className="incorrect"
+                    onClick={() => classifyAnswer(false)}
+                >
                     <FaTimes />
                 </button>
-                <button onClick={() => classifyAnswer(true)}>
+                <button
+                    className="correct"
+                    onClick={() => classifyAnswer(true)}
+                >
                     <FaCheck />
                 </button>
             </div>

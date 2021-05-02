@@ -70,7 +70,47 @@ body {
         color: $mint-cream;
     }
 
-    #answer-cards {
+    #quiz {
+        .classify-answer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1em;
+            button {
+                height: 4em;
+                outline-width: 1px;
+                outline-style: solid;
+
+                svg {
+                    height: 1.5em;
+                    width: 1.5em;
+                }
+
+                &.correct {
+                    outline-color: $dark;
+                    svg {
+                        fill: $dark;
+                    }
+                    &:hover {
+                        background-color: $dark;
+                        svg {
+                            fill: $mint-cream;
+                        }
+                    }
+                }
+                &.incorrect {
+                    outline-color: $tart-orange;
+                    svg {
+                        fill: $tart-orange;
+                    }
+                    &:hover {
+                        background-color: $tart-orange;
+                        svg {
+                            fill: $mint-cream;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .center {
