@@ -1,7 +1,7 @@
 version: "3.8"
 services:
     frontend:
-        image: node:14-alpine
+        image: node:14.16.1-alpine
         depends_on:
             - api
         command: sh -c "npm install && npm run start"
@@ -11,7 +11,7 @@ services:
         volumes:
             - ./frontend:/frontend
     api:
-        image: node:14-alpine
+        image: node:14.16.1-alpine
         depends_on:
             - postgres
             - redis

@@ -1,0 +1,21 @@
+/* Default styling */
+
+@import-normalize;
+@import "./_colours.scss";
+
+body {
+    background-color: $space-cadet;
+    color: $mint-cream;
+    font-family: "Roboto", sans-serif;
+    header {
+    }
+
+    button {
+        padding: 0;
+        border: none;
+        background: none;
+        svg {
+            fill: $mint-cream;
+        }
+    }
+}
