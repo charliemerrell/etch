@@ -16,7 +16,7 @@ body {
         align-items: stretch;
         justify-content: space-between;
         background-color: $panel;
-        color: $extreme1;
+        color: $extreme2;
         h1 {
             margin: 0.3em 0;
         }
@@ -30,20 +30,15 @@ body {
                 svg {
                     height: 2em;
                     width: 2em;
+                    fill: $extreme2;
                 }
             }
 
             button.active {
                 background-color: $extreme1;
-                svg {
-                    fill: $extreme2;
-                }
             }
             button:hover {
                 background-color: $extreme1;
-                svg {
-                    fill: $extreme2;
-                }
             }
         }
     }
@@ -68,7 +63,7 @@ body {
 
         background-color: $panel;
         border-radius: 2px;
-        color: $extreme1;
+        color: $extreme2;
 
         cursor: pointer;
     }
@@ -89,12 +84,12 @@ body {
                 }
 
                 &.correct {
-                    outline-color: $extreme2;
+                    outline-color: $success;
                     svg {
-                        fill: $extreme2;
+                        fill: $success;
                     }
                     &:hover {
-                        background-color: $extreme2;
+                        background-color: $success;
                         svg {
                             fill: $extreme1;
                         }
