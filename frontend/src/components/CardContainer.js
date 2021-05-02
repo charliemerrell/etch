@@ -1,4 +1,5 @@
 import Card from "./Card";
+import { FaTrashAlt } from "react-icons/fa";
 
 function CardContainer(props) {
     async function onDelete() {
@@ -15,7 +16,9 @@ function CardContainer(props) {
     return (
         <div className="card-container">
             <Card onClick={props.onFlipCard} cardData={props.cardData} />
-            <button onClick={onDelete}>Delete</button>
+            <button onClick={onDelete}>
+                <FaTrashAlt />
+            </button>
         </div>
     );
     // should include progress bar in this card container

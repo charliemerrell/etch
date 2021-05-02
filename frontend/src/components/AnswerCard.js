@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaCheck, FaTimes } from "react-icons/fa";
 import CardContainer from "./CardContainer";
 
 function AnswerCard(props) {
@@ -32,8 +33,12 @@ function AnswerCard(props) {
                 handleDelete={props.onFinished}
             />
             <div className={"classify-answer" + disclosed ? " ready" : ""}>
-                <button onClick={() => classifyAnswer(true)}>Correct</button>
-                <button onClick={() => classifyAnswer(false)}>Incorrect</button>
+                <button onClick={() => classifyAnswer(false)}>
+                    <FaTimes />
+                </button>
+                <button onClick={() => classifyAnswer(true)}>
+                    <FaCheck />
+                </button>
             </div>
         </section>
     );

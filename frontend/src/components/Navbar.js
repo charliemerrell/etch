@@ -1,4 +1,5 @@
 import { MODES } from "../constants";
+import { FaPlus, FaListUl, FaUserAlt, FaPlay } from "react-icons/fa";
 
 class Button {
     constructor(idSuffix, innerHtml) {
@@ -8,10 +9,10 @@ class Button {
 }
 
 const buttonInfo = [];
-buttonInfo[MODES.addCards] = new Button("add", "Add");
-buttonInfo[MODES.viewAllCards] = new Button("view-all", "View");
-buttonInfo[MODES.answerCards] = new Button("answer", "Answer");
-buttonInfo[MODES.account] = new Button("account", "Account");
+buttonInfo[MODES.addCards] = new Button("add", <FaPlus />);
+buttonInfo[MODES.viewAllCards] = new Button("view-all", <FaListUl />);
+buttonInfo[MODES.answerCards] = new Button("answer", <FaPlay />);
+buttonInfo[MODES.account] = new Button("account", <FaUserAlt />);
 
 function Navbar(props) {
     function jsxForButton(mode) {

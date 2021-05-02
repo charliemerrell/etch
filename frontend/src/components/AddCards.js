@@ -49,7 +49,6 @@ function AddCards(props) {
                 />
                 <input type="submit" value="Add" />
             </form>
-            <button onClick={props.onClickAnswerCards}>Answer Cards</button>
         </div>
     );
 }

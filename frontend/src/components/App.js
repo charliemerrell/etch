@@ -35,7 +35,10 @@ function App() {
     if (authenticated) {
         return (
             <>
-                <Navbar onClickMode={(mode) => setMode(mode)} mode={mode} />
+                <header>
+                    <h1>Etch</h1>
+                    <Navbar onClickMode={(mode) => setMode(mode)} mode={mode} />
+                </header>
                 {jsxForMode()}
             </>
         );
