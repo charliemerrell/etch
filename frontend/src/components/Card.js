@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Card(props) {
     const [showingQuestion, setShowingQuestion] = useState(true);
+    useEffect(() => {
+        setShowingQuestion(true);
+    }, [props.cardData]);
     function handleClick() {
         setShowingQuestion(!showingQuestion);
         props.onClick && props.onClick();

@@ -119,6 +119,10 @@ body {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1em;
+            visibility: hidden;
+            &.ready {
+                visibility: visible;
+            }
             button {
                 height: 4em;
                 outline-width: 1px;
