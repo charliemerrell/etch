@@ -8,7 +8,7 @@ const progressToMilliseconds = [
     7 * dayInMilliseconds,
     30 * dayInMilliseconds,
     90 * dayInMilliseconds,
-    365 * dayInMilliseconds,
+    180 * dayInMilliseconds,
 ];
 
 function nextAnswerDue(progress) {
