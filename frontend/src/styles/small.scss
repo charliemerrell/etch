@@ -54,7 +54,7 @@ body {
     }
 
     main {
-        height: 90vh;
+        height: 80vh;
     }
 
     .card-meta {
@@ -155,6 +155,11 @@ body {
                 }
             }
         }
+    }
+
+    #all-cards {
+        margin: 1em 0;
+        padding: 0 5em;
     }
 
     .center {
