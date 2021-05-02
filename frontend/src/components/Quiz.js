@@ -25,8 +25,7 @@ function Quiz(props) {
     } else if (cardStack.length === 0) {
         return (
             <main id="quiz" className="center">
-                <span>No cards pending</span>
-                <button onClick={props.onClickAddCards}>Add Cards</button>
+                <span>You're all caught up!</span>
             </main>
         );
     } else {
