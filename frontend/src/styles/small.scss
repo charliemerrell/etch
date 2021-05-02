@@ -5,21 +5,41 @@
 
 body {
     height: 100vh;
-    margin: 0;
+    margin: 0px 10px;
 
     background-color: $space-cadet;
     color: $mint-cream;
     font-family: "Roboto", sans-serif;
     header {
-        button.active {
-            svg {
-                fill: $tart-orange;
-            }
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+
+        h1 {
+            margin: 0.3em 0;
         }
-        button:hover {
-            background-color: $mint-cream;
-            svg {
-                fill: $space-cadet;
+        #navbar {
+            display: flex;
+            gap: 10px;
+
+            button {
+                height: 100%;
+                svg {
+                    height: 2em;
+                    width: 2em;
+                }
+            }
+
+            button.active {
+                svg {
+                    fill: $tart-orange;
+                }
+            }
+            button:hover {
+                background-color: $mint-cream;
+                svg {
+                    fill: $space-cadet;
+                }
             }
         }
     }
@@ -28,6 +48,7 @@ body {
         padding: 0;
         border: none;
         background: none;
+        cursor: pointer;
         svg {
             fill: $mint-cream;
         }

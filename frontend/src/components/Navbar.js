@@ -29,7 +29,7 @@ function Navbar(props) {
     }
 
     return (
-        <section>
+        <section id="navbar">
             {jsxForButton(MODES.account)}
             {jsxForButton(MODES.answerCards)}
             {jsxForButton(MODES.viewAllCards)}
