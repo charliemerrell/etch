@@ -4,10 +4,24 @@
 @import "./_colours.scss";
 
 body {
+    height: 100vh;
+    margin: 0;
+
     background-color: $space-cadet;
     color: $mint-cream;
     font-family: "Roboto", sans-serif;
     header {
+        button.active {
+            svg {
+                fill: $tart-orange;
+            }
+        }
+        button:hover {
+            background-color: $mint-cream;
+            svg {
+                fill: $space-cadet;
+            }
+        }
     }
 
     button {
