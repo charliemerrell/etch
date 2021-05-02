@@ -5,16 +5,18 @@
 
 body {
     height: 100vh;
-    margin: 0px 10px;
-
-    background-color: $space-cadet;
-    color: $mint-cream;
+    margin: 0;
+    background-color: $mint-cream;
+    color: $dark;
     font-family: "Roboto", sans-serif;
     header {
+        padding: 0px 1em;
+
         display: flex;
         align-items: stretch;
         justify-content: space-between;
-
+        background-color: $air-superiority-blue;
+        color: $mint-cream;
         h1 {
             margin: 0.3em 0;
         }
@@ -24,6 +26,7 @@ body {
 
             button {
                 height: 100%;
+                padding: 0 0.3em;
                 svg {
                     height: 2em;
                     width: 2em;
@@ -31,14 +34,15 @@ body {
             }
 
             button.active {
+                background-color: $mint-cream;
                 svg {
-                    fill: $tart-orange;
+                    fill: $dark;
                 }
             }
             button:hover {
                 background-color: $mint-cream;
                 svg {
-                    fill: $space-cadet;
+                    fill: $dark;
                 }
             }
         }
@@ -52,5 +56,25 @@ body {
         svg {
             fill: $mint-cream;
         }
+    }
+
+    main {
+        height: 70vh;
+    }
+
+    .card {
+        height: 8em;
+        width: 14em;
+        background-color: $air-superiority-blue;
+        border-radius: 2px;
+        color: $mint-cream;
+    }
+
+    #answer-cards {
+    }
+
+    .center {
+        display: grid;
+        place-items: center;
     }
 }

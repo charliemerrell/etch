@@ -39,7 +39,7 @@ function App() {
                     <h1>Etch</h1>
                     <Navbar onClickMode={(mode) => setMode(mode)} mode={mode} />
                 </header>
-                {jsxForMode()}
+                <div className="center">{jsxForMode()}</div>
             </>
         );
     } else {

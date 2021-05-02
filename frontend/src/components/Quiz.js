@@ -19,18 +19,19 @@ function Quiz(props) {
         setCardStack(cardStack.slice(1));
     }
 
+    // we can do better
     if (cardStack === null) {
-        return <main id="answer-cards"></main>;
+        return <main id="quiz" className="center"></main>;
     } else if (cardStack.length === 0) {
         return (
-            <main id="answer-cards">
+            <main id="quiz" className="center">
                 <span>No cards pending</span>
                 <button onClick={props.onClickAddCards}>Add Cards</button>
             </main>
         );
     } else {
         return (
-            <main id="answer-cards">
+            <main id="quiz" className="center">
                 <AnswerCard
                     cardData={cardStack[0]}
                     onFinished={handleCardFinished}

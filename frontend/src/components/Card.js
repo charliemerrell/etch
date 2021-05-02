@@ -7,14 +7,14 @@ function Card(props) {
         props.onClick && props.onClick();
     }
     return (
-        <span
-            className="card"
+        <div
+            className="card center"
             role="button"
             aria-pressed={!showingQuestion}
             onClick={handleClick}
         >
             {showingQuestion ? props.cardData.question : props.cardData.answer}
-        </span>
+        </div>
     );
 }
 
