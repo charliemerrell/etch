@@ -162,6 +162,39 @@ body {
         padding: 0 5em;
     }
 
+    #add-cards {
+        form {
+            background-color: $panel;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 10em;
+            width: 16em;
+            padding-top: 2em;
+
+            input {
+                border: none;
+                background: none;
+            }
+            input:not([type="submit"]) {
+                margin: 0 1em;
+                color: $extreme2;
+                border-bottom: 1px solid $extreme2;
+            }
+            input[type="submit"] {
+                height: 4em;
+                color: $extreme2;
+                cursor: pointer;
+                margin: 1em;
+                border: 1px solid $extreme2;
+                &:hover {
+                    background-color: $extreme2;
+                    color: $extreme1;
+                }
+            }
+        }
+    }
+
     .center {
         display: grid;
         place-items: center;

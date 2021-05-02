@@ -31,7 +31,7 @@ function AddCards(props) {
     }
 
     return (
-        <div id="add-cards">
+        <main id="add-cards" className="center">
             <form onSubmit={onSubmitCard}>
                 <input
                     className="question"
@@ -49,7 +49,7 @@ function AddCards(props) {
                 />
                 <input type="submit" value="Add" />
             </form>
-        </div>
+        </main>
     );
 }
 
