@@ -1,3 +1,7 @@
+import { PROGRESS_TRANSITION_MS } from "../constants";
+
+const transitionInS = PROGRESS_TRANSITION_MS / 1000;
+
 function fractionToPerecent(numerator, denominator) {
     return Math.floor((numerator / denominator) * 100);
 }
@@ -9,6 +13,7 @@ function ProgressBar(props) {
                 <span
                     className="progress-bar-fill"
                     style={{
+                        transition: `width ${transitionInS}s`,
                         width: `${fractionToPerecent(
                             props.current,
                             props.total

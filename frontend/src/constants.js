@@ -5,4 +5,6 @@ const MODES = Object.freeze({
     account: 4,
 });
 
-export { MODES };
+const PROGRESS_TRANSITION_MS = 300;
+
+export { MODES, PROGRESS_TRANSITION_MS };

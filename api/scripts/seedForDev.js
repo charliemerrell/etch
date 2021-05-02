@@ -22,8 +22,15 @@ const seedData = {
             userId: 1,
             question: "Capital of France",
             answer: "Paris",
-            progress: 0,
+            progress: 3,
             nextAnswerAfter: new Date(Date.now() + 100000000),
+        },
+        {
+            userId: 1,
+            question: "Capital of Italy",
+            answer: "Rome",
+            progress: 5,
+            nextAnswerAfter: new Date(Date.now() - 100),
         },
     ],
 };

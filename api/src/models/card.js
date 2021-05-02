@@ -28,11 +28,6 @@ function getAllCards(userId) {
     return db.any("SELECT * FROM cards WHERE user_id = $1", [userId]);
 }
 
-function cardReady(card) {
-    console.log(card.next_answer_after, Date.now());
-    return card.next_answer_after < Date.now();
-}
-
 async function getCardsToBeAnswered(userId) {
     return db.any(
         "SELECT * FROM cards WHERE user_id = $1 AND next_answer_after < now()",

@@ -6,5 +6,21 @@
             grid-template-columns: 1fr 1fr;
             column-gap: 1em;
         }
+        #add-cards {
+            form {
+                height: 15em;
+                width: 25em;
+
+                input:not([type="submit"]) {
+                    margin: 0 1em;
+                    color: $extreme2;
+                    border-bottom: 1px solid $extreme2;
+                    font-size: 1em;
+                }
+                input[type="submit"] {
+                    height: 4em;
+                }
+            }
+        }
     }
 }

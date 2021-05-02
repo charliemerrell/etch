@@ -8,8 +8,8 @@ router.get("/", expectSessionId, async (req, res) => {
     const rows = req.query.all
         ? await card.getAllCards(req.session.userId)
         : await card.getCardsToBeAnswered(req.session.userId);
-    const cards = await rows.map(({ id, question, answer }) => {
-        return { id, question, answer };
+    const cards = await rows.map(({ id, question, answer, progress }) => {
+        return { id, question, answer, progress };
     });
     res.json({ cards });
 });
