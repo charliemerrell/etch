@@ -25,6 +25,7 @@ function ViewAllCards(props) {
                         cardData={card}
                         handleUnauth={props.handleUnauth}
                         handleDelete={fetchAllCards}
+                        progress={card.progress}
                     />
                 );
             })}
