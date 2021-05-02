@@ -112,6 +112,10 @@ body {
         color: $extreme2;
 
         cursor: pointer;
+
+        box-sizing: border-box;
+        padding: 20px;
+        text-align: center;
     }
 
     #quiz {
