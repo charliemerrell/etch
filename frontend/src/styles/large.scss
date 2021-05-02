@@ -1,4 +1,9 @@
 @import "./_colours.scss";
 
 @media only screen and (min-width: 1200px) {
+    body {
+        #all-cards {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
 }
