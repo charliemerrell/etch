@@ -6,8 +6,8 @@
 body {
     height: 100vh;
     margin: 0;
-    background-color: $mint-cream;
-    color: $dark;
+    background-color: $extreme1;
+    color: $extreme2;
     font-family: "Roboto", sans-serif;
     header {
         padding: 0px 1em;
@@ -15,8 +15,8 @@ body {
         display: flex;
         align-items: stretch;
         justify-content: space-between;
-        background-color: $air-superiority-blue;
-        color: $mint-cream;
+        background-color: $panel;
+        color: $extreme1;
         h1 {
             margin: 0.3em 0;
         }
@@ -34,15 +34,15 @@ body {
             }
 
             button.active {
-                background-color: $mint-cream;
+                background-color: $extreme1;
                 svg {
-                    fill: $dark;
+                    fill: $extreme2;
                 }
             }
             button:hover {
-                background-color: $mint-cream;
+                background-color: $extreme1;
                 svg {
-                    fill: $dark;
+                    fill: $extreme2;
                 }
             }
         }
@@ -54,7 +54,7 @@ body {
         background: none;
         cursor: pointer;
         svg {
-            fill: $mint-cream;
+            fill: $extreme1;
         }
     }
 
@@ -65,9 +65,12 @@ body {
     .card {
         height: 8em;
         width: 14em;
-        background-color: $air-superiority-blue;
+
+        background-color: $panel;
         border-radius: 2px;
-        color: $mint-cream;
+        color: $extreme1;
+
+        cursor: pointer;
     }
 
     #quiz {
@@ -86,26 +89,26 @@ body {
                 }
 
                 &.correct {
-                    outline-color: $dark;
+                    outline-color: $extreme2;
                     svg {
-                        fill: $dark;
+                        fill: $extreme2;
                     }
                     &:hover {
-                        background-color: $dark;
+                        background-color: $extreme2;
                         svg {
-                            fill: $mint-cream;
+                            fill: $extreme1;
                         }
                     }
                 }
                 &.incorrect {
-                    outline-color: $tart-orange;
+                    outline-color: $danger;
                     svg {
-                        fill: $tart-orange;
+                        fill: $danger;
                     }
                     &:hover {
-                        background-color: $tart-orange;
+                        background-color: $danger;
                         svg {
-                            fill: $mint-cream;
+                            fill: $extreme1;
                         }
                     }
                 }
