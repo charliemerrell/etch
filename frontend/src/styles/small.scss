@@ -127,6 +127,10 @@ body {
         box-sizing: border-box;
         padding: 20px;
         text-align: center;
+        &[aria-pressed="true"] {
+            background-color: $ink;
+            color: $background;
+        }
     }
 
     #quiz {
