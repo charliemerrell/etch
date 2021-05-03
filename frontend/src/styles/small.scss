@@ -6,9 +6,59 @@
 body {
     height: 100vh;
     margin: 0;
-    background-color: $extreme1;
-    color: $extreme2;
+    background-color: $background;
+    color: $ink;
     font-family: "Roboto", sans-serif;
+
+    .center {
+        display: grid;
+        place-items: center;
+    }
+
+    button,
+    input[type="submit"] {
+        background-color: $background;
+        color: $ink;
+        cursor: pointer;
+        border: 1px solid $ink;
+        &:hover {
+            background-color: $ink;
+            color: $background;
+            svg {
+                fill: $background;
+            }
+        }
+        &.danger {
+            background-color: $background;
+            color: $danger;
+            border-color: $danger;
+            &:hover {
+                background-color: $danger;
+                color: $background;
+            }
+        }
+        &.success {
+            background-color: $background;
+            color: $success;
+            border-color: $success;
+            &:hover {
+                background-color: $success;
+                color: $background;
+            }
+        }
+        &.active {
+            background-color: $success;
+        }
+        svg {
+            height: 1.5em;
+            width: 1.5em;
+        }
+    }
+
+    main {
+        height: 80vh;
+    }
+
     header {
         padding: 0px 1em;
 
@@ -16,7 +66,7 @@ body {
         align-items: stretch;
         justify-content: space-between;
         background-color: $panel;
-        color: $extreme2;
+        color: $ink;
         h1 {
             margin: 0.3em 0;
         }
@@ -27,34 +77,13 @@ body {
             button {
                 height: 100%;
                 padding: 0 0.3em;
+                border: none;
                 svg {
                     height: 2em;
                     width: 2em;
-                    fill: $extreme2;
                 }
             }
-
-            button.active {
-                background-color: $extreme1;
-            }
-            button:hover {
-                background-color: $extreme1;
-            }
         }
-    }
-
-    button {
-        padding: 0;
-        border: none;
-        background: none;
-        cursor: pointer;
-        svg {
-            fill: $extreme1;
-        }
-    }
-
-    main {
-        height: 80vh;
     }
 
     .card-meta {
@@ -66,21 +95,6 @@ body {
 
         margin: 1em 0;
 
-        button {
-            svg {
-                fill: $extreme2;
-                height: 1.5em;
-                width: 1.5em;
-            }
-        }
-
-        button:hover {
-            background-color: $extreme2;
-            svg {
-                fill: $extreme1;
-            }
-        }
-
         .progress-bar {
             margin-right: 0.5em;
         }
@@ -89,7 +103,7 @@ body {
     .progress-bar {
         display: flex;
         .progress-bar-outline {
-            background-color: $extreme2;
+            background-color: $ink;
             display: flex;
             border-radius: 8px;
             height: 5px;
@@ -109,7 +123,7 @@ body {
 
         background-color: $panel;
         border-radius: 2px;
-        color: $extreme2;
+        color: $ink;
 
         cursor: pointer;
 
@@ -129,38 +143,6 @@ body {
             }
             button {
                 height: 4em;
-                outline-width: 1px;
-                outline-style: solid;
-
-                svg {
-                    height: 1.5em;
-                    width: 1.5em;
-                }
-
-                &.correct {
-                    outline-color: $success;
-                    svg {
-                        fill: $success;
-                    }
-                    &:hover {
-                        background-color: $success;
-                        svg {
-                            fill: $extreme1;
-                        }
-                    }
-                }
-                &.incorrect {
-                    outline-color: $danger;
-                    svg {
-                        fill: $danger;
-                    }
-                    &:hover {
-                        background-color: $danger;
-                        svg {
-                            fill: $extreme1;
-                        }
-                    }
-                }
             }
         }
     }
@@ -189,40 +171,20 @@ body {
             }
             input:not([type="submit"]) {
                 margin: 0 1em;
-                color: $extreme2;
-                border-bottom: 1px solid $extreme2;
+                color: $ink;
+                border-bottom: 1px solid $ink;
             }
             input[type="submit"] {
                 height: 4em;
-                color: $extreme2;
+                color: $ink;
                 cursor: pointer;
                 margin: 1em;
-                border: 1px solid $extreme2;
+                border: 1px solid $ink;
                 &:hover {
-                    background-color: $extreme2;
-                    color: $extreme1;
+                    background-color: $ink;
+                    color: $background;
                 }
             }
         }
-    }
-
-    #account {
-        button,
-        input[type="submit"] {
-            background-color: $extreme1;
-            color: $extreme2;
-            cursor: pointer;
-            margin: 1em;
-            border: 1px solid $extreme2;
-            &:hover {
-                background-color: $extreme2;
-                color: $extreme1;
-            }
-        }
-    }
-
-    .center {
-        display: grid;
-        place-items: center;
     }
 }

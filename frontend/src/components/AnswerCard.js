@@ -42,13 +42,13 @@ function AnswerCard(props) {
             />
             <div className={"classify-answer" + (disclosed ? " ready" : "")}>
                 <button
-                    className="incorrect"
+                    className="danger"
                     onClick={() => classifyAnswer(false)}
                 >
                     <FaTimes />
                 </button>
                 <button
-                    className="correct"
+                    className="success"
                     onClick={() => classifyAnswer(true)}
                 >
                     <FaCheck />
