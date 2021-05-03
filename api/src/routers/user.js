@@ -1,6 +1,8 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const emailValidator = require("email-validator");
+const { expectSessionId } = require("../utils/auth");
+const db = require("../db");
 
 const user = require("../models/user");
 
@@ -53,6 +55,31 @@ router.post("/logout", (req, res) => {
     req.session.destroy(() => {
         res.clearCookie("sid").sendStatus(200);
     });
+});
+
+router.patch("/", expectSessionId, async (req, res) => {
+    const { oldPassword, newPassword } = req.body;
+    const userRecord = await db.one(
+        "SELECT password_hash FROM users WHERE id = $1",
+        [req.session.userId]
+    );
+    const passwordCorrect = await bcrypt.compare(
+        oldPassword,
+        userRecord.password_hash
+    );
+    if (!passwordCorrect) {
+        res.sendStatus(401);
+        return;
+    }
+    const newPasswordHash = await bcrypt.hash(
+        newPassword,
+        parseInt(process.env.SALT_ROUNDS, 10)
+    );
+    await db.none("UPDATE users SET password_hash = $1 WHERE id = $2", [
+        newPasswordHash,
+        req.session.userId,
+    ]);
+    res.sendStatus(200);
 });
 
 module.exports = router;

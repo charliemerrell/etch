@@ -38,7 +38,7 @@ function SignUp(props) {
             if (response.ok) {
                 props.handleSuccess();
             } else {
-                // handle error
+                // TODO andle error
             }
         }
     }
