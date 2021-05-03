@@ -4,6 +4,7 @@ function SignUp(props) {
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
     const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
 
     function handleInputChange(e, setter) {
         setter(e.target.value);
@@ -15,6 +16,7 @@ function SignUp(props) {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        setError("");
         if (passwordsMatch()) {
             const response = await fetch("/api/user/signup", {
                 method: "POST",
@@ -30,8 +32,10 @@ function SignUp(props) {
             if (response.ok) {
                 props.handleSuccess();
             } else {
-                // TODO andle error
+                setError("Email already taken");
             }
+        } else {
+            setError("Passwords don't match");
         }
     }
 
@@ -60,6 +64,7 @@ function SignUp(props) {
                 required
                 value={password2}
             />
+            <span className="danger">{error}</span>
             <input type="submit" value="Sign Up" />
         </form>
     );

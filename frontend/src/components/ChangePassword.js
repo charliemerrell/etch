@@ -4,6 +4,10 @@ function ChangePassword() {
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [newPassword2, setNewPassword2] = useState("");
+    const [message, setMessage] = useState({
+        text: "",
+        class: "",
+    });
 
     function handlePasswordChange(e, setter) {
         setter(e.target.value);
@@ -13,8 +17,22 @@ function ChangePassword() {
         return newPassword === newPassword2;
     }
 
+    function clearAllInputs() {
+        setOldPassword("");
+        setNewPassword("");
+        setNewPassword2("");
+    }
+
+    function clearMessage() {
+        setMessage({
+            text: "",
+            class: "",
+        });
+    }
+
     async function handleSubmit(e) {
         e.preventDefault();
+        clearMessage();
         if (passwordsMatch()) {
             const response = await fetch("/api/user", {
                 method: "PATCH",
@@ -25,10 +43,23 @@ function ChangePassword() {
                 body: JSON.stringify({ oldPassword, newPassword }),
             });
             if (response.ok) {
-                // TODO confirm
+                setMessage({
+                    text: "Password changed",
+                    class: "success",
+                });
+                clearAllInputs();
+                setTimeout(clearMessage, 2000);
             } else {
-                // TODO andle error
+                setMessage({
+                    text: "Password incorrect",
+                    class: "danger",
+                });
             }
+        } else {
+            setMessage({
+                text: "Passwords don't match",
+                class: "danger",
+            });
         }
     }
 
@@ -58,6 +89,7 @@ function ChangePassword() {
                 required
                 value={newPassword2}
             />
+            <span className={message.class}>{message.text}</span>
             <input type="submit" value="Submit" />
         </form>
     );

@@ -3,12 +3,14 @@ import { useState } from "react";
 function Login(props) {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
 
     function handleInputChange(e, setter) {
         setter(e.target.value);
     }
 
     async function handleSubmit(e) {
+        setError("");
         e.preventDefault();
         const response = await fetch("/api/user/login", {
             method: "POST",
@@ -24,7 +26,7 @@ function Login(props) {
         if (response.ok) {
             props.handleSuccess();
         } else {
-            // TODO handle error
+            setError("Email or password is incorrect");
         }
     }
 
@@ -43,6 +45,7 @@ function Login(props) {
                 value={password}
                 required
             />
+            <span className="danger">{error}</span>
             <input type="submit" value="Login" />
         </form>
     );

@@ -59,7 +59,7 @@ router.post("/logout", (req, res) => {
 
 router.patch("/", expectSessionId, async (req, res) => {
     const { oldPassword, newPassword } = req.body;
-    const passCorrect = passwordCorrect(oldPassword, req.session.userId);
+    const passCorrect = await passwordCorrect(oldPassword, req.session.userId);
     if (!passCorrect) {
         res.sendStatus(401);
         return;

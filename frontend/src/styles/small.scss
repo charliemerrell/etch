@@ -185,6 +185,14 @@ body {
                 color: $background;
             }
         }
+        span.danger {
+            color: $danger;
+            margin: 0 1em;
+        }
+        span.success {
+            color: $success;
+            margin: 0 1em;
+        }
     }
 
     #account {
