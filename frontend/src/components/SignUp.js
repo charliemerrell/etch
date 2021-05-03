@@ -5,16 +5,8 @@ function SignUp(props) {
     const [password2, setPassword2] = useState("");
     const [email, setEmail] = useState("");
 
-    function handlePasswordChange(e) {
-        setPassword(e.target.value);
-    }
-
-    function handlePassword2Change(e) {
-        setPassword2(e.target.value);
-    }
-
-    function handleEmailChange(e) {
-        setEmail(e.target.value);
+    function handleInputChange(e, setter) {
+        setter(e.target.value);
     }
 
     function passwordsMatch() {
@@ -49,13 +41,13 @@ function SignUp(props) {
                 type="email"
                 placeholder="email"
                 required
-                onChange={handleEmailChange}
+                onChange={(e) => handleInputChange(e, setEmail)}
                 value={email}
             />
             <input
                 type="password"
                 placeholder="password"
-                onChange={handlePasswordChange}
+                onChange={(e) => handleInputChange(e, setPassword)}
                 minLength="8"
                 required
                 value={password}
@@ -63,7 +55,7 @@ function SignUp(props) {
             <input
                 type="password"
                 placeholder="confirm password"
-                onChange={handlePassword2Change}
+                onChange={(e) => handleInputChange(e, setPassword2)}
                 minLength="8"
                 required
                 value={password2}

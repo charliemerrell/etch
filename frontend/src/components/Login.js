@@ -4,12 +4,8 @@ function Login(props) {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
 
-    function handlePasswordChange(e) {
-        setPassword(e.target.value);
-    }
-
-    function handleEmailChange(e) {
-        setEmail(e.target.value);
+    function handleInputChange(e, setter) {
+        setter(e.target.value);
     }
 
     async function handleSubmit(e) {
@@ -37,13 +33,13 @@ function Login(props) {
             <input
                 placeholder="email"
                 required
-                onChange={handleEmailChange}
+                onChange={(e) => handleInputChange(e, setEmail)}
                 value={email}
             />
             <input
                 type="password"
                 placeholder="password"
-                onChange={handlePasswordChange}
+                onChange={(e) => handleInputChange(e, setPassword)}
                 value={password}
                 required
             />
