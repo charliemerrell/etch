@@ -9,6 +9,10 @@ const seedData = {
             email: "johnsmith@etchtestapp.com",
             password: "password1",
         },
+        {
+            email: "johnsmithian@etchtestapp.com",
+            password: "password1",
+        },
     ],
     cards: [
         {
@@ -75,6 +79,13 @@ const seedData = {
         {
             userId: 1,
             question: "?",
+            answer: "!",
+            progress: 5,
+            nextAnswerAfter: new Date(Date.now() + 1000000),
+        },
+        {
+            userId: 2,
+            question: "Should be John Smithian",
             answer: "!",
             progress: 5,
             nextAnswerAfter: new Date(Date.now() + 1000000),
