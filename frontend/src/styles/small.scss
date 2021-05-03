@@ -127,6 +127,7 @@ body {
         box-sizing: border-box;
         padding: 20px;
         text-align: center;
+        overflow: scroll;
         &[aria-pressed="true"] {
             background-color: $ink;
             color: $background;
@@ -191,6 +192,7 @@ body {
             width: 90%;
         }
         margin-top: 1em;
+        padding: 10px;
         background-color: $panel;
         #basics-section {
             display: flex;
