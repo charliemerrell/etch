@@ -8,18 +8,7 @@
         }
         #add-cards {
             form {
-                height: 15em;
-                width: 25em;
-
-                input:not([type="submit"]) {
-                    margin: 0 1em;
-                    color: $ink;
-                    border-bottom: 1px solid $ink;
-                    font-size: 1em;
-                }
-                input[type="submit"] {
-                    height: 4em;
-                }
+                width: 30em;
             }
         }
     }
