@@ -43,7 +43,18 @@ function App() {
             </>
         );
     } else {
-        return <LoginOrSignUp handleSuccess={() => setAuthenticated(true)} />;
+        return (
+            <>
+                <header>
+                    <h1>Etch</h1>
+                </header>
+                <main className="center">
+                    <LoginOrSignUp
+                        handleSuccess={() => setAuthenticated(true)}
+                    />
+                </main>
+            </>
+        );
     }
 }
 

@@ -6,9 +6,13 @@ import DeleteAccount from "./DeleteAccount";
 function Account(props) {
     return (
         <main id="account">
-            <UserEmail handleUnauth={props.handleUnauth} />
-            <Logout handleSuccess={props.handleUnauth} />
+            <section id="basics-section">
+                <UserEmail handleUnauth={props.handleUnauth} />
+                <Logout handleSuccess={props.handleUnauth} />
+            </section>
+            <hr />
             <ChangePassword handleUnauth={props.handleUnauth} />
+            <hr />
             <DeleteAccount handleUnauth={props.handleUnauth} />
         </main>
     );

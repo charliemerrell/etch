@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function UserEmail() {
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState("...loading");
     useEffect(() => {
         fetch("/api/user/email")
             .then((response) => response.json())

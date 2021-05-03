@@ -15,14 +15,22 @@ function LoginOrSignUp(props) {
         return (
             <div id="login-or-signup">
                 <Login handleSuccess={props.handleSuccess} />
-                <button onClick={() => setMode(MODES.signup)}>Sign Up</button>
+                <footer>
+                    Don't have an account yet?
+                    <button onClick={() => setMode(MODES.signup)}>
+                        Sign Up
+                    </button>
+                </footer>
             </div>
         );
     } else {
         return (
             <div id="login-or-signup">
                 <SignUp handleSuccess={props.handleSuccess} />
-                <button onClick={() => setMode(MODES.login)}>Login</button>
+                <footer>
+                    Already have an account?
+                    <button onClick={() => setMode(MODES.login)}>Login</button>
+                </footer>
             </div>
         );
     }

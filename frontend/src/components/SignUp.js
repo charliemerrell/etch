@@ -68,7 +68,7 @@ function SignUp(props) {
                 required
                 value={password2}
             />
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Sign Up" />
         </form>
     );
 }

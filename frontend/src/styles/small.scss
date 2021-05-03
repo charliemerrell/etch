@@ -183,7 +183,28 @@ body {
     }
 
     #account {
+        hr {
+            width: 90%;
+        }
         margin-top: 1em;
         background-color: $panel;
+        #basics-section {
+            display: flex;
+            flex-direction: column;
+            button {
+                height: 3em;
+            }
+            margin: 0 1em;
+        }
+    }
+
+    #login-or-signup {
+        background-color: $panel;
+        footer {
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+        }
+        padding: 1em;
     }
 }
