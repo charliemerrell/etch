@@ -51,6 +51,34 @@ const seedData = {
             progress: 1,
             nextAnswerAfter: new Date(Date.now() - 100),
         },
+        {
+            userId: 1,
+            question: "How many bits in a byte?",
+            answer: "8",
+            progress: 5,
+            nextAnswerAfter: new Date(Date.now() + 1000000),
+        },
+        {
+            userId: 1,
+            question: "What was Harry's ginger friend called?",
+            answer: "Ron",
+            progress: 5,
+            nextAnswerAfter: new Date(Date.now() + 1000000),
+        },
+        {
+            userId: 1,
+            question: "Why am I muscly?",
+            answer: "I don't work out",
+            progress: 5,
+            nextAnswerAfter: new Date(Date.now() + 1000000),
+        },
+        {
+            userId: 1,
+            question: "?",
+            answer: "!",
+            progress: 5,
+            nextAnswerAfter: new Date(Date.now() + 1000000),
+        },
     ],
 };
 
