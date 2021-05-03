@@ -14,7 +14,7 @@ function Login(props) {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const response = await fetch("/api/users/login", {
+        const response = await fetch("/api/user/login", {
             method: "POST",
             headers: {
                 Accept: "application/json",

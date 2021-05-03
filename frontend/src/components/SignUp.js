@@ -24,7 +24,7 @@ function SignUp(props) {
     async function handleSubmit(e) {
         e.preventDefault();
         if (passwordsMatch()) {
-            const response = await fetch("/api/users/signup", {
+            const response = await fetch("/api/user/signup", {
                 method: "POST",
                 headers: {
                     Accept: "application/json",

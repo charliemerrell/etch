@@ -16,7 +16,7 @@ function ChangePassword() {
     async function handleSubmit(e) {
         e.preventDefault();
         if (passwordsMatch()) {
-            const response = await fetch("/api/users", {
+            const response = await fetch("/api/user", {
                 method: "PATCH",
                 headers: {
                     Accept: "application/json",

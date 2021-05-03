@@ -26,7 +26,7 @@ function App() {
                     <AddCards handleUnauth={() => setAuthenticated(false)} />
                 );
             case MODES.account:
-                return <Account handleLogout={() => setAuthenticated(false)} />;
+                return <Account handleUnauth={() => setAuthenticated(false)} />;
             default:
                 return <Quiz handleUnauth={() => setAuthenticated(false)} />;
         }

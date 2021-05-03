@@ -4,7 +4,7 @@ const cardRouter = require("./card");
 
 const router = express.Router();
 
-router.use("/users", userRouter);
+router.use("/user", userRouter);
 router.use("/cards", cardRouter);
 
 module.exports = router;

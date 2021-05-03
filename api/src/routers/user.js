@@ -59,15 +59,8 @@ router.post("/logout", (req, res) => {
 
 router.patch("/", expectSessionId, async (req, res) => {
     const { oldPassword, newPassword } = req.body;
-    const userRecord = await db.one(
-        "SELECT password_hash FROM users WHERE id = $1",
-        [req.session.userId]
-    );
-    const passwordCorrect = await bcrypt.compare(
-        oldPassword,
-        userRecord.password_hash
-    );
-    if (!passwordCorrect) {
+    const passCorrect = passwordCorrect(oldPassword, req.session.userId);
+    if (!passCorrect) {
         res.sendStatus(401);
         return;
     }
@@ -81,5 +74,37 @@ router.patch("/", expectSessionId, async (req, res) => {
     ]);
     res.sendStatus(200);
 });
+
+router.get("/email", expectSessionId, async (req, res) => {
+    const { email } = await db.one("SELECT email FROM users WHERE id = $1", [
+        req.session.userId,
+    ]);
+    res.json({ email });
+});
+
+router.delete("/", expectSessionId, async (req, res) => {
+    const passCorrect = await passwordCorrect(
+        req.body.password,
+        req.session.userId
+    );
+    if (!passCorrect) {
+        res.sendStatus(401);
+        return;
+    }
+    await deleteUser(req.session.userId);
+    res.sendStatus(200);
+});
+
+async function passwordCorrect(inputPassword, id) {
+    const {
+        password_hash,
+    } = await db.one("SELECT password_hash FROM users WHERE id = $1", [id]);
+    return await bcrypt.compare(inputPassword, password_hash);
+}
+
+async function deleteUser(userId) {
+    await db.none("DELETE FROM cards WHERE user_id = $1", [userId]);
+    await db.none("DELETE FROM users WHERE id = $1", [userId]);
+}
 
 module.exports = router;

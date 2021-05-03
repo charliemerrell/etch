@@ -1,6 +1,6 @@
 function Logout(props) {
     async function handleClick() {
-        await fetch("/api/users/logout", {
+        await fetch("/api/user/logout", {
             method: "POST",
         });
         props.handleSuccess();

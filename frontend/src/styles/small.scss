@@ -206,6 +206,21 @@ body {
         }
     }
 
+    #account {
+        button,
+        input[type="submit"] {
+            background-color: $extreme1;
+            color: $extreme2;
+            cursor: pointer;
+            margin: 1em;
+            border: 1px solid $extreme2;
+            &:hover {
+                background-color: $extreme2;
+                color: $extreme1;
+            }
+        }
+    }
+
     .center {
         display: grid;
         place-items: center;
