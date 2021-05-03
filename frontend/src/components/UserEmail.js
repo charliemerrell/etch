@@ -8,7 +8,7 @@ function UserEmail() {
             .then(({ email }) => setEmail(email));
     }, []);
 
-    return <span>{email}</span>;
+    return <p>{email}</p>;
 }
 
 export default UserEmail;
