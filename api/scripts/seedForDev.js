@@ -90,6 +90,13 @@ const seedData = {
             progress: 5,
             nextAnswerAfter: new Date(Date.now() + 1000000),
         },
+        {
+            userId: 1,
+            question: "Should be finished",
+            answer: "Is it not?",
+            progress: 6,
+            nextAnswerAfter: null,
+        },
     ],
 };
 

@@ -19,13 +19,15 @@ router.post("/", expectSessionId, async (req, res) => {
     res.sendStatus(201);
 });
 
+router.get("/:id", expectSessionId, async (req, res) => {
+    const cardRecord = await card.getCard(req.params.id);
+    res.json(cardRecord);
+});
+
 router.post("/:cardId/answer", expectSessionId, async (req, res) => {
     if (await card.cardBelongsToUser(req.params.cardId, req.session.userId)) {
-        const cardFinished = await card.handleAnswer(
-            req.params.cardId,
-            req.body.correct
-        );
-        res.send(cardFinished ? "finished" : "");
+        await card.handleAnswer(req.params.cardId, req.body.correct);
+        res.sendStatus(200);
     } else {
         res.sendStatus(403);
     }

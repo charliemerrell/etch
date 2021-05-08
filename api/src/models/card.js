@@ -12,7 +12,10 @@ const progressToMilliseconds = [
 ];
 
 function nextAnswerDue(progress) {
-    return new Date(Date.now() + progressToMilliseconds[progress]);
+    if (progress < progressToMilliseconds.length) {
+        return new Date(Date.now() + progressToMilliseconds[progress]);
+    }
+    return null;
 }
 
 function addCard(userId, question, answer) {
@@ -30,7 +33,9 @@ function getAllCards(userId) {
 
 async function getCardsToBeAnswered(userId) {
     return db.any(
-        "SELECT * FROM cards WHERE user_id = $1 AND next_answer_after < now()",
+        `SELECT * FROM cards
+        WHERE user_id = $1
+        AND next_answer_after < now()`,
         [userId]
     );
 }
@@ -43,6 +48,10 @@ async function cardBelongsToUser(cardId, userId) {
     return rows.count === "1";
 }
 
+function getCard(cardId) {
+    return db.oneOrNone("SELECT * FROM cards WHERE id = $1", [cardId]);
+}
+
 function deleteCard(cardId) {
     db.none("DELETE FROM cards WHERE id = $1", [cardId]);
 }
@@ -53,15 +62,10 @@ async function handleAnswer(cardId, correct) {
     ]);
     const progress = parseInt(card.progress, 10);
     const newProgress = correct ? progress + 1 : Math.max(0, progress - 2);
-    if (newProgress >= progressToMilliseconds.length) {
-        deleteCard(cardId);
-        return true;
-    }
     db.none(
         "UPDATE cards SET progress = $1, next_answer_after = $2 WHERE id = $3",
         [newProgress, nextAnswerDue(newProgress), cardId]
     );
-    return false;
 }
 
 module.exports = {
@@ -70,5 +74,6 @@ module.exports = {
     getCardsToBeAnswered,
     cardBelongsToUser,
     deleteCard,
+    getCard,
     handleAnswer,
 };

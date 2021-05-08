@@ -21,7 +21,7 @@ function CardContainer(props) {
                 <button onClick={onDelete}>
                     <FaTrashAlt />
                 </button>
-                <ProgressBar current={props.progress} total={6} />
+                <ProgressBar current={props.cardData.progress} total={6} />
             </div>
         </div>
     );

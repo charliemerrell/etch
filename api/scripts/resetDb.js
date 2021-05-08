@@ -20,7 +20,7 @@ async function resetDb() {
             question TEXT NOT NULL,
             answer TEXT NOT NULL,
             created_at TIMESTAMP DEFAULT NOW(),
-            next_answer_after TIMESTAMP NOT NULL,
+            next_answer_after TIMESTAMP,
             progress INT NOT NULL,
             PRIMARY KEY (id),
             FOREIGN KEY (user_id)
