@@ -46,7 +46,7 @@ function Login(props) {
                 required
             />
             <span className="danger">{error}</span>
-            <input type="submit" value="Login" />
+            <button type="submit">Login</button>
         </form>
     );
 }

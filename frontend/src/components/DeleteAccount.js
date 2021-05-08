@@ -34,7 +34,9 @@ function DeleteAccount(props) {
                 required
                 value={password}
             />
-            <input type="submit" className="danger" value="Delete Account" />
+            <button type="submit" className="danger">
+                Delete Account
+            </button>
         </form>
     );
 }

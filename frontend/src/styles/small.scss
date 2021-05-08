@@ -15,8 +15,7 @@ body {
         place-items: center;
     }
 
-    button,
-    input[type="submit"] {
+    button {
         background-color: $background;
         color: $ink;
         cursor: pointer;
@@ -168,22 +167,14 @@ body {
         input {
             border: none;
             background: none;
-        }
-        input:not([type="submit"]) {
             margin: 0 1em;
             color: $ink;
             border-bottom: 1px solid $ink;
         }
-        input[type="submit"] {
+        button[type="submit"] {
             height: 3em;
-            color: $ink;
             cursor: pointer;
             margin: 1em;
-            border: 1px solid $ink;
-            &:hover {
-                background-color: $ink;
-                color: $background;
-            }
         }
         span.danger {
             color: $danger;

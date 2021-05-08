@@ -65,7 +65,9 @@ function SignUp(props) {
                 value={password2}
             />
             <span className="danger">{error}</span>
-            <input type="submit" value="Sign Up" />
+            <button type="submit" className="success">
+                Sign Up
+            </button>
         </form>
     );
 }

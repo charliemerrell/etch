@@ -90,7 +90,7 @@ function ChangePassword() {
                 value={newPassword2}
             />
             <span className={message.class}>{message.text}</span>
-            <input type="submit" value="Submit" />
+            <button type="submit">Change Password</button>
         </form>
     );
 }

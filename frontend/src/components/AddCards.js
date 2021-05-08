@@ -47,7 +47,7 @@ function AddCards(props) {
                     required
                     value={answer}
                 />
-                <input type="submit" value="Add" />
+                <button type="submit">Add</button>
             </form>
         </main>
     );
