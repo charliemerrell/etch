@@ -5,6 +5,8 @@ services:
         depends_on:
             - api
         command: sh -c "npm install && npm run start"
+        environment:
+            CHOKIDAR_USEPOLLING: "true"
         ports:
             - 3000:3000
         working_dir: /frontend
@@ -23,6 +25,7 @@ services:
             SESSION_SECRET: shhhhhh
             SALT_ROUNDS: 5
             REDIS_URL: redis://redis
+            CHOKIDAR_USEPOLLING: "true"
         ports:
             - 4000:4000
         working_dir: /api

@@ -126,10 +126,13 @@ body {
         box-sizing: border-box;
         padding: 20px;
         text-align: center;
-        overflow: scroll;
+        overflow-y: scroll;
         &[aria-pressed="true"] {
             background-color: $ink;
             color: $background;
+        }
+        &::-webkit-scrollbar {
+            display: none;
         }
     }
 
