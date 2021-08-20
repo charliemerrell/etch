@@ -3,8 +3,9 @@ const card = require("../models/card");
 const { expectSessionId } = require("../utils/auth");
 
 const router = express.Router();
+router.use(expectSessionId);
 
-router.get("/", expectSessionId, async (req, res) => {
+router.get("/", async (req, res) => {
     const rows = req.query.all
         ? await card.getAllCards(req.session.userId)
         : await card.getCardsToBeAnswered(req.session.userId);
@@ -14,17 +15,17 @@ router.get("/", expectSessionId, async (req, res) => {
     res.json({ cards });
 });
 
-router.post("/", expectSessionId, async (req, res) => {
+router.post("/", async (req, res) => {
     await card.addCard(req.session.userId, req.body.question, req.body.answer);
     res.sendStatus(201);
 });
 
-router.get("/:id", expectSessionId, async (req, res) => {
+router.get("/:id", async (req, res) => {
     const cardRecord = await card.getCard(req.params.id);
     res.json(cardRecord);
 });
 
-router.post("/:cardId/answer", expectSessionId, async (req, res) => {
+router.post("/:cardId/answer", async (req, res) => {
     if (await card.cardBelongsToUser(req.params.cardId, req.session.userId)) {
         await card.handleAnswer(req.params.cardId, req.body.correct);
         res.sendStatus(200);
@@ -33,7 +34,7 @@ router.post("/:cardId/answer", expectSessionId, async (req, res) => {
     }
 });
 
-router.delete("/:cardId", expectSessionId, async (req, res) => {
+router.delete("/:cardId", async (req, res) => {
     if (await card.cardBelongsToUser(req.params.cardId, req.session.userId)) {
         card.deleteCard(req.params.cardId);
         res.sendStatus(200);
