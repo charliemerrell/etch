@@ -1,5 +1,3 @@
-const bcrypt = require("bcrypt");
-
 const resetDb = require("./resetDb");
 const seed = require("./seed");
 
